@@ -1,0 +1,11 @@
+include partials/head.pug
+include partials/header.pug
+
+div.container(style="margin: 2rem auto;")
+    h1.title Error
+    h2.subtitle= error || 'An unknown error occured.'
+
+    button.button.is-info(onclick="window.history.back(1)" autofocus) &laquo; Try again
+
+include partials/footer.pug
+include partials/foot.pug

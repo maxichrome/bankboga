@@ -1,0 +1,26 @@
+include ../partials/head.pug
+include ../partials/header.pug
+
+div.container(style="margin: 2rem auto;")
+    h1.title Log in
+    h2.subtitle Employee Access Only
+
+    div.columns
+        div.column
+            form.form(method="post" action="")
+                div.field
+                    label.label Access Code
+                    input.input(autofocus type='password' name='code')
+                button.button.is-fullwidth(type='submit') Authenticate
+        
+        div.column.has-background-info(style="min-height: 30rem;")
+            h1.title.has-text-white Corporate Update
+            h2.subtitle.has-text-white All employees are now eligible for tier 3 benefits!
+                br
+                | This includes all branch employees.
+                br
+                br
+                | Apply on the EmployeeConnect portal.
+
+include ../partials/footer.pug
+include ../partials/foot.pug

@@ -1,0 +1,37 @@
+nav.navbar
+    div.container
+        a(href="/")
+            div.navbar-brand
+                span.is-size-5.has-text-weight-semibold= siteTitle
+        div.navbar-menu
+            div.navbar-end
+                - if(authenticated)
+                    a.navbar-item(href="/b/accounts") Accounts
+                    a.navbar-item(href="/b/transfer") Transfer
+                a.navbar-item(href="/c/fraud") Fraud
+                a.navbar-item(href="/c/contact") Contact
+                - if(authenticated)
+                    a.navbar-item(href="/a/logout") Logout
+                        span.tag.is-info= username.split('.').join(' ')
+                - else
+                    a.navbar-item(href="/") Login
+
+style.
+    .navbar {
+        background-color: #f5f5f5;
+    }
+
+    .navbar .navbar-brand {
+        display: flex;
+        margin-left: 0 !important;
+
+    }
+
+    .navbar .navbar-brand span {
+        margin: auto 0;
+    }
+
+    .navbar .navbar-end span.tag {
+        margin-left: .5em;
+        text-transform: capitalize;
+    }

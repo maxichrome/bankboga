@@ -1,0 +1,51 @@
+include ../partials/head.pug
+include ../partials/header.pug
+
+input(type='hidden' value=JSON.stringify(accounts))#accountsData
+input(type='hidden' value=JSON.stringify(transactions))#transactionsData
+input(type='hidden' value=JSON.stringify(transfers))#transfersData
+
+div.container(style="margin: 2rem auto;")
+    h1.title Admin Panel
+    h2.subtitle Manage #{siteTitle} account data
+
+    h4.heading.is-size-4 Accounts
+    table#accounts
+
+    h4.heading.is-size-4 Transactions
+    table#transactions
+
+    h4.heading.is-size-4 Transfers
+    table#transfers
+
+script(src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/4.3.0/js/tabulator.min.js")
+
+script.
+    var accounts = new Tabulator('#accounts', {
+        height: 480,
+        autoColumns: true,
+        layout: 'fitColumns'
+    })
+
+    var transactions = new Tabulator('#transactions', {
+        height: 480,
+        autoColumns: true,
+        layout: 'fitColumns'
+    })
+
+    var transfers = new Tabulator('#transfers', {
+        height: 480,
+        autoColumns: true,
+        layout: 'fitColumns'
+    })
+
+    accounts.setData(JSON.parse(document.getElementById('accountsData').value))
+    transactions.setData(JSON.parse(document.getElementById('transactionsData').value))
+    transfers.setData(JSON.parse(document.getElementById('transfersData').value))
+
+    function logDataA() {
+        console.table(accounts.getData())
+    }
+
+include ../partials/footer.pug
+include ../partials/foot.pug

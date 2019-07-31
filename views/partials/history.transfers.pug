@@ -1,0 +1,17 @@
+table.table.is-fullwidth.is-striped.is-hoverable.is-size-7
+    thead
+        tr
+            th Date
+            th Origin
+            th Destination
+            th Memo
+            th.is-narrow Amount
+    tbody
+        each transfer in transfers
+            tr
+                th.is-narrow #{transfer.date.toLocaleDateString('en-US', { year: '2-digit', month: 'numeric', day: 'numeric' })}
+                td.is-narrow #{accounts[transfer.origin].nickname} x#{accounts[transfer.origin].number}
+                td.is-narrow #{accounts[transfer.destination].nickname} x#{accounts[transfer.destination].number}
+                td #{transfer.memo || 'General Transfer'}
+                td.is-narrow.has-text-right
+                    span.tag $#{transfer.amount.toFixed(2).toLocaleString()}

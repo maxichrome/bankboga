@@ -1,0 +1,42 @@
+include partials/head.pug
+include partials/header.pug
+
+-
+    origin = accounts.find((acct) => acct.number === query.origin)
+    destination = accounts.find((acct) => acct.number === query.destination)
+
+div.container(style='margin: 2rem auto')
+    div.columns
+        div.column.is-two-fifths
+            h1.title Are you sure?
+            h3.subtitle Please verify you'd like to make this transfer.
+
+            table.table.is-fullwidth
+                tbody
+                    tr
+                        td.is-narrow Transferred
+                        th $#{(+query.amount).toFixed(2).toLocaleString()}
+                    tr
+                        td.is-narrow from
+                        th #{origin.nickname} x#{origin.number}
+                    tr
+                        td.is-narrow to
+                        th #{destination.nickname} x#{destination.number}
+                    if (query.memo)
+                        tr
+                            td.is-narrow for
+                            td= query.memo
+
+            form(action='submit')
+                input(type='hidden' value=query.amount name='amount')
+                input(type='hidden' value=query.origin name='origin')
+                input(type='hidden' value=query.destination name='destination')
+                input(type='hidden' value=query.memo name='memo')
+                button.button.is-success.is-fullwidth(type='submit' autofocus) Confirm
+
+        div.column
+            h1.title Transfer History
+            include partials/history.transfers.pug
+
+include partials/footer.pug
+include partials/foot.pug

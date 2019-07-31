@@ -1,0 +1,39 @@
+include partials/head.pug
+include partials/header.pug
+
+div.container(style="margin: 2rem auto;")
+    div.columns
+        div.column.is-two-fifths
+            h1.title New Transfer
+
+            form.form(action="transfer/confirm")
+                div.columns
+                    div.column
+                        label.label(for="origin-account") Origin
+                        div.select.is-fullwidth
+                            select#origin-account(name="origin")
+                                each account in accounts
+                                    option(value=account.number selected=(account.number === query.account)) #{account.nickname} x#{account.number}
+                    div.column
+                        label.label(for="destination-account") Destination
+                        div.select.is-fullwidth
+                            select#destination-account(name="destination")
+                                each account in accounts
+                                    option(value=account.number selected=(account.number === query.account)) #{account.nickname} x#{account.number}
+
+                div.field
+                    label.label(for="transfer-amount") Amount
+                    input.input.is-fullwidth.is-medium#transfer-amount(placeholder="$250.00" name="amount" autofocus)
+
+                div.field
+                    label.label(for="transfer-memo") Memo
+                    input.input.is-fullwidth#transfer-memo(placeholder="General Transfer" name="memo")
+
+                button.button.is-fullwidth.is-info(type='submit') Make Transfer
+
+        div.column
+            h1.title Transfer History
+            include partials/history.transfers.pug
+
+include partials/footer.pug
+include partials/foot.pug

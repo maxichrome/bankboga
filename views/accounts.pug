@@ -1,0 +1,118 @@
+include partials/head.pug
+include partials/header.pug
+
+-
+    function balanceString(balance) {
+        if(balance.toLocaleString().includes('.')) {
+            return balance.toLocaleString()
+        } else {
+            return balance.toLocaleString() + '.00'
+        }
+    }
+
+div.container(style="margin: 2rem auto;")
+    div.columns
+        div.column
+            h1.title My Accounts
+
+            each account in accounts
+                div.card.is-fullwidth
+                    div.card-content
+                        div.is-size-5.is-fullwidth.has-text-weight-semibold(style="display: flex;")
+                            span(data-account-number=account.number)= account.nickname
+                            span.has-text-weight-normal(style="margin-left:auto;") (************#{account.number})
+                        table.table.is-fullwidth.is-striped
+                            thead
+                                tr
+                                    th.is-narrow.has-text-right Available Balance
+                                    th
+                                    th.has-text-centered Quick Actions
+                            tbody
+                                tr
+                                    td.is-narrow.has-text-right.has-text-weight-semibold(class=`${account.balance < 0 ? 'has-text-danger' : ''}`)
+                                        | $ #{balanceString(account.balance)}
+                                    td
+                                    td.has-text-centered.buttons(style="display:flex;justify-content:center;")
+                                        a.button.is-small.is-success(href=`/b/transfer?account=${account.number}`)
+                                            | Transfer
+                                        a.button.is-small.is-info(href='#' onclick=`renameAccount(${account.number})`) 
+                                            | Rename
+
+
+            script.
+                function renameAccount(number) {
+                    var element = document.querySelector('span[data-account-number="' + number + '"]')
+                    var oldName = element.innerText;
+
+                    element.innerHTML = '<form name="rename-' + number + '" onsubmit="submitRename(' + number + ')"><input name="newname" class="input is-fullwidth" /><button class="is-hidden" type="submit"></button></form>'
+                    
+                    var input = document.forms['rename-' + number].elements.newname;
+
+                    input.focus()
+                    input.value = oldName;
+                }
+
+                function submitRename(number) {
+                    var form = document.forms['rename-' + number]
+                    var newname = form.elements.newname.value
+                    var element = document.querySelector('span[data-account-number="' + number + '"]')
+                    var data = {}
+
+                    data[number] = {
+                        nickname: newname
+                    }
+
+                    fetch('/api/accounts', {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    element.innerText = newname
+
+                    return false
+                }
+
+            //- table.table.is-fullwidth.is-striped.is-hoverable
+            //-     thead
+            //-         tr
+            //-             th Name
+            //-             th Account Number
+            //-             th
+            //-             th Balance
+            //-             th Actions
+            //-     tbody
+            //-         each account in accounts
+            //-             tr
+            //-                 th #{account.nickname}
+            //-                 td ************#{account.number}
+            //-                 td.is-narrow.has-text-right $
+            //-                 td.is-narrow.has-text-right(class=`${account.balance < 0 ? 'is-danger' : ''}`) #{balanceString(account.balance)}
+            //-                 td.is-narrow
+            //-                     a(href=`/b/transfer?account=${account.number}`) Transfer
+            //-                     |  / 
+                                a Rename
+
+        div.column.is-one-half
+            h1.title Recent Transactions
+            table.table.is-fullwidth.is-striped.is-hoverable.is-size-7
+                thead
+                    tr
+                        th Date
+                        th Description
+                        th Account
+                        th
+                        th Amount
+                tbody
+                    each transaction in transactions
+                        tr
+                            th.is-narrow #{transaction.date.toLocaleDateString('en-US', { year: '2-digit', month: 'numeric', day: 'numeric' })}
+                            td #{transaction.description}
+                            td.is-narrow #{accounts[transaction.account].nickname}
+                            td.is-narrow x#{accounts[transaction.account].number}
+                            td.is-narrow.has-text-right
+                                span(class=`tag ${transaction.amount >= 0 ? 'is-success' : 'is-danger'}`) $#{transaction.amount.toFixed(2).toLocaleString()}
+
+include partials/footer.pug
+include partials/foot.pug

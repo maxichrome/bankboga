@@ -1,0 +1,63 @@
+include partials/head.pug
+include partials/header.pug
+
+-
+    const errors = {
+        user: 'Provided username is invalid.',
+        pass: 'Provided password is invalid.',
+        vrfy: 'Verification failed.'
+    }
+
+    let error = null
+
+    if(query && query.error)
+        if(errors[query.error])
+            error = errors[query.error]
+        else
+            error = 'An error occurred. Please try again.'
+
+div.fancyBackground
+    div.container(style="margin: auto;")
+        div.columns
+            div.column
+            div.column.is-two-fifths
+                div.card.has-text-centered
+                    h1.title= siteTitle
+                    h2.subtitle Where all your banking dreams come true.
+                    form.form.has-text-left(method='post' action='/a/login')
+                        h1.heading.is-size-5 Log in
+                        - if(error)
+                            span.tag.is-danger= error
+                        label.label Username
+                            input.input(name='username' autofocus)
+                        label.label Password
+                            input.input(name='password' type='password')
+                        div.field.is-grouped
+                            div.control
+                                button.button.is-success.has-attachments(type='submit') Log In
+                            div.control
+                                a.button.is-link Apply Today
+                            div.control
+                                a.button.is-light(href='/passwordreset') Credential Recovery
+                        div.field
+                            h4.heading Microsoft will never ask for your banking details.....
+            div.column
+
+style.
+    .fancyBackground {
+        background-image: url('/fancybg.png');
+        background-position: center;
+        background-size: 50px 50px;
+        background-repeat: repeat;
+        height: 100%;
+        display: flex;
+    }
+
+    .card {
+        padding: 25px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, .95)
+    }
+
+include partials/footer.pug
+include partials/foot.pug

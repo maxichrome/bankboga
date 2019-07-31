@@ -1,0 +1,40 @@
+-
+    function parseAmount(amount) {
+        return parseFloat(amount.replace(/[^\d\.]/g, '')).toFixed(2)
+    }
+
+doctype html
+<html lang="en">
+    head
+        -
+            siteTitle = 'L.R. Jenkins Financial Group'
+            pageTitle = (pageTitle)
+                ? `${pageTitle} | ${siteTitle}`
+                : siteTitle
+
+        title= pageTitle
+
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        meta(http-equiv='X-UA-Compatible' content='ie=edge')
+
+        link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css')
+
+        style.
+            html {
+                height: 100%;
+            }
+
+            body {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+
+            body .container {
+                width: inherit;
+            }
+
+    //- Just open the tag, the abbreviation would auto-close it
+    <body>

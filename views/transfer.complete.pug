@@ -1,0 +1,45 @@
+include partials/head.pug
+include partials/header.pug
+
+-
+    origin = accounts.find((acct) => acct.number === query.origin)
+    destination = accounts.find((acct) => acct.number === query.destination)
+
+    transfers.push({
+        origin: accounts.indexOf(accounts.find((acc) => +acc.number === +query.origin)),
+        destination: accounts.indexOf(accounts.find((acc) => +acc.number === +query.destination)),
+        amount: +query.amount,
+        memo: query.memo,
+        date: new Date()
+    })
+
+div.container(style="margin: 2rem auto;")
+    div.columns
+        div.column.is-two-fifths
+            h1.title Done!
+            h3.subtitle Your transfer is complete.
+
+            table.table.is-fullwidth
+                tbody
+                    tr
+                        td.is-narrow Transferring
+                        th $#{(+query.amount).toFixed(2).toLocaleString()}
+                    tr
+                        td.is-narrow from
+                        th #{origin.nickname} x#{origin.number}
+                    tr
+                        td.is-narrow to
+                        th #{destination.nickname} x#{destination.number}
+                    if (query.memo)
+                        tr
+                            td.is-narrow for
+                            td= query.memo
+
+            a.button.is-info.is-fullwidth(href="/b/transfer") Make Another Transfer
+
+        div.column
+            h1.title Transfer History
+            include partials/history.transfers.pug
+
+include partials/footer.pug
+include partials/foot.pug
