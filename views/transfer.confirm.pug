@@ -5,7 +5,7 @@ include partials/header.pug
     origin = accounts.find((acct) => acct.number === query.origin)
     destination = accounts.find((acct) => acct.number === query.destination)
 
-div.container(style='margin: 2rem auto')
+div.container(class='my-4 mx-auto')
     div.columns
         div.column.is-two-fifths
             h1.title Are you sure?

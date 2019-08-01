@@ -1,0 +1,136 @@
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
+
+:root {
+    
+}
+
+body {
+    @apply font-body;
+
+    > nav .container {
+        @apply flex flex-row justify-between;
+
+        .brand {
+            @apply font-semibold;
+        }
+
+        .menu {
+            @apply flex flex-row;
+        }
+
+        a {
+            @apply py-4 px-3;
+
+            &:first-of-type {
+                @apply -ml-3;
+            }
+
+            &:last-of-type {
+                @apply -mr-3;
+            }
+        }
+    }
+}
+
+a {
+    @apply text-blue-600;
+
+    &:hover {
+        @apply text-blue-900;
+    }
+}
+
+main#landing {
+    @apply bg-center bg-repeat flex bg-gray-400;
+
+    --background-size: 215px;
+
+    background-image: url('/fancybg.png');
+    background-size: var(--background-size) var(--background-size);
+    height: 100%;
+}
+
+.card {
+    @apply rounded-lg bg-gray-100 shadow overflow-hidden;
+
+    max-width: calc(theme('width.64') * 2);
+
+    header,
+    footer,
+    article {
+        @apply px-4 py-4;
+    }
+
+    header,
+    footer {
+        @apply border-gray-300 border-0 border-solid;
+    }
+
+    header {
+        border-bottom-width: 1px;
+    }
+
+    footer {
+        @apply uppercase text-sm font-semibold;
+
+        border-top-width: 1px;
+    }
+
+    article {
+
+    }
+}
+
+.button {
+    @apply px-3 py-2 inline-block m-1 rounded shadow bg-gray-300 text-black font-body border-none text-base no-underline h-auto w-auto leading-snug font-medium border-solid border-transparent;
+
+    text-align: inherit;
+    border-width: 1px;
+
+    transition: box-shadow .1s ease, border-color .1s ease;
+
+    &:hover,
+    &:focus {
+        @apply shadow-md cursor-pointer border-gray-400;
+    }
+
+    &:focus {
+        @apply outline-none border-gray-500;
+    }
+}
+
+form .field {
+    @apply flex flex-col;
+}
+
+label {
+    @apply font-semibold;
+}
+
+.input {
+    @apply shadow rounded p-1 px-2 border-solid border-white bg-white m-1;
+
+    border-width: 1px;
+    box-sizing: border-box;
+
+    transition: box-shadow .1s ease, border-color .1s ease;
+
+    &:hover,
+    &:focus {
+        @apply shadow-md outline-none border-gray-300;
+    }
+
+    &:focus {
+        @apply border-gray-400;
+    }
+}
+
+.tag {
+    @apply text-sm rounded px-2 py-1 bg-gray-300 m-1;
+
+    &.red {
+        @apply bg-red-600 text-white;
+    }
+}

@@ -1,20 +1,19 @@
-nav.navbar
-    div.container
+nav
+    div.container.mx-auto
         a(href="/")
-            div.navbar-brand
+            div.brand
                 span.is-size-5.has-text-weight-semibold= siteTitle
-        div.navbar-menu
-            div.navbar-end
-                - if(authenticated)
-                    a.navbar-item(href="/b/accounts") Accounts
-                    a.navbar-item(href="/b/transfer") Transfer
-                a.navbar-item(href="/c/fraud") Fraud
-                a.navbar-item(href="/c/contact") Contact
-                - if(authenticated)
-                    a.navbar-item(href="/a/logout") Logout
-                        span.tag.is-info= username.split('.').join(' ')
-                - else
-                    a.navbar-item(href="/") Login
+        div.menu
+            - if(authenticated)
+                a(href="/b/accounts") Accounts
+                a(href="/b/transfer") Transfer
+            a(href="/c/fraud") Fraud
+            a(href="/c/contact") Contact
+            - if(authenticated)
+                a(href="/a/logout") Logout
+                    span.tag= username.split('.').join(' ')
+            - else
+                a(href="/") Login
 
 style.
     .navbar {
