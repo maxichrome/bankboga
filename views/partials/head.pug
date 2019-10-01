@@ -1,16 +1,27 @@
 -
     function parseAmount(amount) {
-        return parseFloat(amount.replace(/[^\d\.]/g, '')).toFixed(2)
+        return parseFloat(amount.toString().replace(/[^\d\.]/g, '')).toFixed(2)
+    }
+    
+    function balanceString(balance) {
+        if(balance.toLocaleString().includes('.')) {
+            return balance.toLocaleString()
+        } else {
+            return balance.toLocaleString() + '.00'
+        }
     }
 
 doctype html
 <html lang="en">
     head
         -
-            siteTitle = 'Bank of Abogaca'
-            pageTitle = (pageTitle)
-                ? `${pageTitle} | ${siteTitle}`
-                : siteTitle
+            const siteTitle = 'Bank of Abogaca'
+            if(pageTitle)
+                //- page title already exists
+                pageTitle = `${pageTitle} | ${siteTitle}`
+            else
+                //- just use site title
+                pageTitle = siteTitle
 
         title= pageTitle
 
@@ -19,6 +30,7 @@ doctype html
         meta(http-equiv='X-UA-Compatible' content='ie=edge')
 
         link(rel='stylesheet' href='/css/main.css')
+        link(rel='stylesheet' href='https://i.icomoon.io/public/temp/42d0a687e8/Bankogaca/style.css')
 
         style.
             html {

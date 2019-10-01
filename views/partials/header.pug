@@ -11,26 +11,11 @@ nav
             a(href="/c/contact") Contact
             - if(authenticated)
                 a(href="/a/logout") Logout
-                    span.tag= username.split('.').join(' ')
+                    span.tag= username.split('.').join(' ').toUpperCase()
             - else
                 a(href="/") Login
 
 style.
-    .navbar {
+    nav {
         background-color: #f5f5f5;
-    }
-
-    .navbar .navbar-brand {
-        display: flex;
-        margin-left: 0 !important;
-
-    }
-
-    .navbar .navbar-brand span {
-        margin: auto 0;
-    }
-
-    .navbar .navbar-end span.tag {
-        margin-left: .5em;
-        text-transform: capitalize;
     }

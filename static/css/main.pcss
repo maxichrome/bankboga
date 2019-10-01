@@ -52,6 +52,10 @@ main#landing {
     height: 100%;
 }
 
+.container {
+    @apply px-3;
+}
+
 .card {
     @apply rounded-lg bg-gray-100 shadow overflow-hidden;
 
@@ -84,20 +88,20 @@ main#landing {
 }
 
 .button {
-    @apply px-3 py-2 inline-block m-1 rounded shadow bg-gray-300 text-black font-body border-none text-base no-underline h-auto w-auto leading-snug font-medium border-solid border-transparent;
+    @apply px-3 py-1 inline-block m-1 rounded shadow bg-gray-300 text-black font-body border-none text-base no-underline h-auto w-auto leading-snug font-medium border-solid border-transparent;
 
     text-align: inherit;
     border-width: 1px;
 
-    transition: box-shadow .1s ease, border-color .1s ease;
+    transition: box-shadow .1s ease, border-color .1s ease, background-color .1s ease;
 
     &:hover,
     &:focus {
-        @apply shadow-md cursor-pointer border-gray-400;
+        @apply shadow-md cursor-pointer border-gray-500 bg-gray-400 outline-none;
     }
 
-    &:focus {
-        @apply outline-none border-gray-500;
+    &:active {
+        @apply bg-gray-500 border-gray-400;
     }
 }
 
@@ -132,5 +136,22 @@ label {
 
     &.red {
         @apply bg-red-600 text-white;
+    }
+
+    &.green {
+        @apply bg-green-600 text-white;
+    }
+}
+
+table.table {
+    th, td {
+        @apply py-1 px-2;
+
+        text-align: inherit;
+
+        &.narrow {
+            white-space: nowrap;
+            width: 1%;
+        }
     }
 }
