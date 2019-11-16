@@ -24,10 +24,10 @@ include partials/header.pug
                         - else
                             .text-xl.flex.flex-row.justify-between
                                 span Available Credit
-                                span $ #{balanceString(account.balance)}
+                                span $ #{balanceString(10000-account.balance)}
                             .flex.flex-row.justify-between
                                 span Outstanding Balance
-                                span $ #{balanceString(1000-account.balance)}
+                                span $ #{balanceString(account.balance)}
                         
                     .flex.flex-col.w-full.text-center.mt-2(class='md:flex-row')
                         a.button.flex-grow.green(href=`/b/transfer?account=${account.number}`) Transfer
