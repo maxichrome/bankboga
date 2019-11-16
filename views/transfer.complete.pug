@@ -3,15 +3,28 @@ include partials/header.pug
 
 -
     origin = accounts.find((acct) => acct.number === query.origin)
+    originIndex = accounts.indexOf(origin)
     destination = accounts.find((acct) => acct.number === query.destination)
+    destinationIndex = accounts.indexOf(destination)
+    amt = +query.amount
 
-    transfers.push({
-        origin: accounts.indexOf(accounts.find((acc) => +acc.number === +query.origin)),
-        destination: accounts.indexOf(accounts.find((acc) => +acc.number === +query.destination)),
-        amount: +query.amount,
+    transfers.unshift({
+        origin: originIndex,
+        destination: destinationIndex,
+        amount: amt,
         memo: query.memo,
         date: new Date()
     })
+
+    transactions.unshift({
+      description: `XFER FROM ACCT x${origin.number}`,
+      amount: amt,
+      date: new Date(),
+      account: destinationIndex
+    })
+
+    origin.balance = origin.balance - amt
+    destination.balance = destination.balance + amt
 
 div.container(class='my-5 mx-auto')
     div.columns
@@ -36,6 +49,7 @@ div.container(class='my-5 mx-auto')
                             td= query.memo
 
             a.button.is-info.is-fullwidth(href="/b/transfer") Make Another Transfer
+            a.button.is-info.is-fullwidth(href="/b/accounts") Accounts
 
         div.column
             h1.title Transfer History
