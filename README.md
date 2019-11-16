@@ -2,7 +2,7 @@
 
 (Started by @hadenpf)
 
-![alt text](https://raw.githubusercontent.com/CynthiaRutledge/bankboga/master/imgs/img.png)
+![alt text](https://raw.githubusercontent.com/CynthiaRutledge/bankboga/master/img.png)
 
 Login is `Anything#nnnn` where `nnnn` is a 4 digit number with any password that contains `asdfasdf` and is at least 15 characters long.
 
