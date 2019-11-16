@@ -4,7 +4,11 @@
 
 ![alt text](https://raw.githubusercontent.com/CynthiaRutledge/bankboga/master/img.png)
 
+[Here's a demo.](https://fake-bank-for-scambaiting.herokuapp.com/)
+
 Login is `Anything#nnnn` where `nnnn` is a 4 digit number with any password that contains `asdfasdf` and is at least 15 characters long.
+
+You'll want to run this locally, though, and make it look legit from within your VM.
 
 Running in Docker:
 
