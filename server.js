@@ -51,6 +51,8 @@ app.use('/a', require('./apps/userauth'))
 app.use('/b', require('./apps/banking'))
 app.use('/api', require('./apps/api'))
 
+app.use('/pages', require('./apps/pages'))
+
 app.get('*', function (req, res, next) {
     res.render('error', {
         error: '404',
