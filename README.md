@@ -28,6 +28,6 @@ http://www.hackaapl.com/how-to-trust-self-signed-certificates-in-windows-7/
 Cert was generated with:
 
 ```
-openssl req -subj "/CN=njcreditunionmutual.com" -nodes -new -x509 -keyout server.key -out server.cert -days 3650
+openssl req -new -x509 -newkey rsa:2048 -sha256 -nodes -keyout server.key -days 3560 -out server.cert -config server.cnf
 ```
 
