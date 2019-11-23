@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "version": "2.0.8",
+  "icons": { "16": "app-icons/icon-16x16-unsharp.png",
+             "19": "app-icons/icon-19x19-unsharp.png",
+             "38": "app-icons/icon-38x38-unsharp.png",
+             "48": "app-icons/icon-48x48-unsharp.png",
+            "128": "app-icons/icon-128x128-unsharp.png" },
+  "name": "Dropbox",
+  "homepage_url": "https://dropbox.com",
+  "description": "Dropbox is a modern workspace designed to reduce busywork-so you can focus on the things that matter. Sign in and put your creative energy to work.",
+  "permissions": [
+    "webRequest", "https://*.google.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://*.google.com/*"],
+      "js": ["dropbox.js"]
+    }
+  ],
+  "web_accessible_resources": ["dropbox.js"]
+}
