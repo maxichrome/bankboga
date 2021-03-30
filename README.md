@@ -1,16 +1,20 @@
-# Fake bank for messing with refund scammers.
+**This project is currently being redone. Please do not use it for the time being. Thank you!**
 
-(Started by @hadenpf)
+---
 
-![alt text](https://raw.githubusercontent.com/CynthiaRutledge/bankboga/master/img.png)
+# bankboga
 
-[Here's a demo.](https://fake-bank-for-scambaiting.herokuapp.com/)
+Fake bank for wasting scammers' time and patience.
+
+Jump to: [Installing](#Installing)
+
+## How to Use
+
+## Installing
 
 Login is `Anything#nnnn` where `nnnn` is a 4 digit number with any password that contains `asdfasdf` and is at least 15 characters long.
 
 You'll want to run this locally, though, and make it look legit from within your VM.
-
-## Running in Docker:
 
 ```
 docker build -t fake-bank .

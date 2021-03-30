@@ -1,5 +1,3 @@
-const port = process.env['PORT'] || 8080
-
 const express = require('express')
 const path = require('path')
 const https = require('https')
@@ -8,6 +6,8 @@ const fs = require('fs')
 const app = express()
 
 const utils = require('./utils')
+
+const port = process.env.PORT || 8080
 
 app.set('view engine', 'pug')
 
@@ -67,10 +67,6 @@ app.use((err, req, res, next) => {
     })
 })
 
-https.createServer({
-	key: fs.readFileSync('server.key'),
-	cert: fs.readFileSync('server.cert')
-}, app).listen(port, () => {
-	console.log(`Https server is listening! Port: ${port}`)
+app.listen(port, () => {
+    console.log(`Server is listening! Port: ${port}`)
 })
-

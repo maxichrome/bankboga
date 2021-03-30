@@ -4,15 +4,15 @@ nav
             div.brand
                 span.is-size-5.has-text-weight-semibold= siteTitle
         div.menu
-            - if(authenticated)
+            if authenticated
                 a(href="/b/accounts") Accounts
                 a(href="/b/transfer") Transfer
-            a(href="/pages/rates") Rates
-            a(href="/pages/contact") Contact
-            - if(authenticated)
+                a(href="/pages/rates") Rates
+                a(href="/pages/contact") Contact
+            if authenticated
                 a(href="/a/logout") Logout
-                    span.tag= username.split('.').join(' ').toUpperCase()
-            - else
+                span.tag= username.split('.').join(' ').toUpperCase()
+            else
                 a(href="/") Login
 
 style.

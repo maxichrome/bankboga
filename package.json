@@ -1,25 +1,28 @@
 {
-    "name": "bankboga",
-    "version": "1.0.0",
-    "main": "server.js",
-    "license": "MS-PL",
-    "private": false,
-    "scripts": {
-        "start": "nodemon node server.js"
-    },
-    "dependencies": {
-        "autoprefixer": "^9.6.1",
-        "body-parser": "^1.19.0",
-        "cookie-parser": "^1.4.4",
-        "ejs": "^2.6.2",
-        "express": "^4.17.1",
-        "nodemon": "^1.19.1",
-        "postcss-import": "^12.0.1",
-        "postcss-middleware": "^1.1.4",
-        "postcss-nested": "^4.1.2",
-        "pug": "^2.0.4",
-        "tailwindcss": "^1.0.6"
-    },
-    "repository": "https://github.com/hadenpf/bankboga.git",
-    "author": "hadenpf"
+  "name": "bankboga",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "private": false,
+  "repository": "https://github.com/hadenpf/bankboga.git",
+  "author": "hadenpf",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.6.1",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "postcss-import": "^12.0.1",
+    "postcss-middleware": "^1.1.4",
+    "postcss-nested": "^4.1.2",
+    "pug": "^2.0.4",
+    "tailwindcss": "^1.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
 }

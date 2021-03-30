@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-const data = require('../data')
+const data = require('../data.example')
 const utils = require('../utils')
 
 app.get('/rates', function (req, res, next) {

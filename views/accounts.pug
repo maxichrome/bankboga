@@ -33,20 +33,18 @@ include partials/header.pug
                         a.button.flex-grow.green(href=`/b/transfer?account=${account.number}`) Transfer
                         button.button.flex-grow(onclick=`renameAccount("${account.number}")`) Rename
 
-        div.w-full
+        div.w-full(class="lg:w-3/5")
             h1.text-4xl Recent Transactions
 
             table.table.w-full.text-md
                 thead
                     tr
-                        th Date
                         th Description
                         th Account
                         th.text-right Amount
                 tbody
                     each transaction in transactions
                         tr
-                            th.narrow #{transaction.date.toLocaleDateString('en-US', { year: '2-digit', month: 'numeric', day: 'numeric' })}
                             td #{transaction.description}
                             td.narrow
                                 span.text-md #{accounts[transaction.account].nickname}
