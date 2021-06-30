@@ -21,7 +21,7 @@ main#landing
         section.card.text-center.p-0
             header
                 h1.text-4xl= siteTitle
-                h2.text-lg The feeling is Mutual. Bank on it.
+                h2.text-lg We take banking seriously! You should too!
             article
                 form.text-left(method='post' action='/a/login')
                     - if(error)
@@ -33,13 +33,10 @@ main#landing
                         input.input#password(name='password' placeholder='Password' type='password')
                     .field.flex-row
                         button.button.bg-green-500.text-white(type='submit') Log In
-                        a.button.bg-blue-500.text-white(href='/c/apply') Apply Now
+                        a.button.bg-blue-500.text-white(href='/') Forgot Password
             footer.text-left
                 h4.normal-case.mb-2.underline
-                    a(href='/a/recover') Forgot your password?
-                h4.text-gray-500
-                  span Warning: Microsoft will never ask you to log into your bank. 
-                  a Learn more.
+                  a(href='https://en.wikipedia.org/wiki/Overpayment_scam') Learn more about Bank of TN!
 
 include partials/footer.pug
 include partials/foot.pug

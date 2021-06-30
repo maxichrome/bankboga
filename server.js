@@ -1,4 +1,4 @@
-const port = process.env['PORT'] || 8080
+const port = process.env['PORT'] || 80
 
 const express = require('express')
 const path = require('path')
@@ -69,8 +69,8 @@ app.use((err, req, res, next) => {
 
 https.createServer({
 	key: fs.readFileSync('server.key'),
-	cert: fs.readFileSync('server.cert')
+	cert: fs.readFileSync('server.crt')
 }, app).listen(port, () => {
-	console.log(`Https server is listening! Port: ${port}`)
+	console.log(`Bank Running on Port: ${port}`)
 })
 

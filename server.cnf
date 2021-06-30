@@ -7,14 +7,14 @@ distinguished_name = dn
 
 [dn]
 C = US
-ST = NJ
+ST = TN
 L = Piscataway
-emailAddress = abuse@njcreditunionmutual.com
-CN = njcreditunionmutual.com
+emailAddress = abuse@bankoftn.com
+CN = bankoftn.com
 
 [v3_req]
 subjectAltName = @alt_names
 
 [alt_names]
-DNS.1 = njcreditunionmutual.com
-DNS.2 = www.njcreditunionmutual.com
+DNS.1 = bankoftn.com
+DNS.2 = www.bankoftn.com
